@@ -271,3 +271,5 @@
 2021-05-03 19:30:29.511  INFO 8404 --- [XNIO-1 I/O-1] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
 2021-05-03 19:31:29.199  INFO 8404 --- [XNIO-1 task-14] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:52059
 2021-05-03 19:31:29.201  INFO 8404 --- [XNIO-1 task-14] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:52059
+2021-05-03 19:31:54.238  INFO 8404 --- [XNIO-1 I/O-3] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:52059 -- CloseStatus[code=1000, reason=Requested.]
+2021-05-03 19:31:54.238  INFO 8404 --- [XNIO-1 I/O-3] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
