@@ -3,6 +3,7 @@ using System.IO;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Addons.Hosting;
+using Discord.Addons.Interactive;
 using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
@@ -31,7 +32,7 @@ namespace Pyan
                 .ConfigureLogging(x =>
                 {
                     x.AddConsole();
-                    x.SetMinimumLevel(LogLevel.Error);
+                    x.SetMinimumLevel(LogLevel.Debug);
                 })
                 .ConfigureDiscordHost<DiscordSocketClient>((context, config) =>
                 {
@@ -56,13 +57,15 @@ namespace Pyan
                 {
                     services
                     .AddHostedService<CommandHandler>()
+                    .AddSingleton<LavaLinkAudio>()
+                    .AddSingleton<InteractiveService>()
                     .AddLavaNode(x =>
                     {
                         x.SelfDeaf = true;
                     });
                 })
                 .UseConsoleLifetime();
-            
+
             var host = builder.Build();
             using (host)
             {

@@ -1,5 +1,7 @@
 ﻿using Discord;
 using Discord.Commands;
+using Discord.WebSocket;
+using Pyan.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,111 +14,42 @@ namespace Pyan.Modules
 {
     public class MusicModule : ModuleBase<SocketCommandContext>
     {
-        private readonly LavaNode _lavaNode;
+        public LavaLinkAudio AudioService { get; set; }
 
-        public MusicModule(LavaNode lavaNode)
-        {
-            _lavaNode = lavaNode;
-        }
+        [Command("Join")]
+        public async Task Join()
+            => await ReplyAsync(embed: await AudioService.JoinAsync(Context.Guild, Context.User as IVoiceState, Context.Channel as ITextChannel));
 
-        [Command("Join", RunMode = RunMode.Async)]
-        public async Task JoinAsync()
-        {
-            if (_lavaNode.HasPlayer(Context.Guild))
-            {
-                await ReplyAsync("I'm already connected to a voice channel!");
-                return;
-            }
+        [Command("Leave")]
+        public async Task Leave()
+            => await ReplyAsync(embed: await AudioService.LeaveAsync(Context.Guild));
 
-            var voiceState = Context.User as IVoiceState;
-            if (voiceState?.VoiceChannel == null)
-            {
-                await ReplyAsync("You must be connected to a voice channel!");
-                return;
-            }
+        [Command("Play")]
+        public async Task Play([Remainder] string search)
+            => await ReplyAsync(embed: await AudioService.PlayAsync(Context.User as SocketGuildUser, Context.Guild, search));
 
-            try
-            {
-                await _lavaNode.JoinAsync(voiceState.VoiceChannel, Context.Channel as ITextChannel);
-                await ReplyAsync($"Joined {voiceState.VoiceChannel.Name}");
-            }
-            catch (Exception exception)
-            {
-                await ReplyAsync(exception.Message);
-            }
-        }
+        [Command("Stop")]
+        public async Task Stop()
+            => await ReplyAsync(embed: await AudioService.StopAsync(Context.Guild));
 
-        [Command("Play", RunMode = RunMode.Async)]
-        public async Task PlayAsync([Remainder]string query) 
-        { 
-            if (string.IsNullOrWhiteSpace(query)) 
-            {
-                await ReplyAsync("Please provide search terms.");
-                return;
-            }
+        [Command("List")]
+        public async Task List()
+            => await ReplyAsync(embed: await AudioService.ListAsync(Context.Guild));
 
-            if (!_lavaNode.HasPlayer(Context.Guild)) 
-            {
-                await ReplyAsync("I'm not connected to a voice channel.");
-                return;
-            }
-
-            var searchResponse = await _lavaNode.SearchYouTubeAsync(query); 
-            if (searchResponse.LoadStatus == LoadStatus.LoadFailed ||
-                searchResponse.LoadStatus == LoadStatus.NoMatches) 
-            {
-                await ReplyAsync($"I wasn't able to find anything for `{query}`.");
-                return;
-            }
-
-            var player = _lavaNode.GetPlayer(Context.Guild);
-
-            if (player.PlayerState == PlayerState.Playing || player.PlayerState == PlayerState.Paused)
-            {
-                var track = searchResponse.Tracks[0];
-                player.Queue.Enqueue(track);
-                await ReplyAsync($"Enqueued: {track.Title}");
-            }
-            else
-            {
-                var track = searchResponse.Tracks[0];
-
-                await player.PlayAsync(track);
-                await ReplyAsync($"Now Playing: {track.Title}");
-            }
-        }
-
-        [Command("Skip", RunMode = RunMode.Async)]
+        [Command("Skip")]
         public async Task Skip()
-        {
-            var voiceState = Context.User as IVoiceState;
-            if (voiceState?.VoiceChannel == null)
-            {
-                await ReplyAsync("You must be connected to a voice channel!");
-                return;
-            }
+            => await ReplyAsync(embed: await AudioService.SkipTrackAsync(Context.Guild));
 
-            if (!_lavaNode.HasPlayer(Context.Guild))
-            {
-                await ReplyAsync("I'm not connected to a voice channel!");
-                return;
-            }
+        [Command("Volume")]
+        public async Task Volume(int volume)
+            => await ReplyAsync(await AudioService.SetVolumeAsync(Context.Guild, volume));
 
-            var player = _lavaNode.GetPlayer(Context.Guild);
-            if (voiceState.VoiceChannel != player.VoiceChannel)
-            {
-                await ReplyAsync("You need to be in the same voice channel as me!");
-                return;
-            }
+        [Command("Pause")]
+        public async Task Pause()
+            => await ReplyAsync(await AudioService.PauseAsync(Context.Guild));
 
-            if(player.Queue.Count == 0)
-            {
-                await ReplyAsync("There are no m ore songs in the queue!");
-                return;
-            }
-
-            await player.SkipAsync();
-            await ReplyAsync($"Skipped! Now playing **{player.Track.Title}**!");
-        }
+        [Command("Resume")]
+        public async Task Resume()
+            => await ReplyAsync(await AudioService.ResumeAsync(Context.Guild));
     }
 }

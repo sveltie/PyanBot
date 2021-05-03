@@ -102,3 +102,5 @@ C:\Users\user\source\repos\Pyan-Chan\Template\obj\Debug\netcoreapp3.1\Pyan-Chan.
 C:\Users\user\source\repos\Pyan-Chan\Template\obj\Debug\netcoreapp3.1\Pyan-Chan.dll
 C:\Users\user\source\repos\Pyan-Chan\Template\obj\Debug\netcoreapp3.1\Pyan-Chan.pdb
 C:\Users\user\source\repos\Pyan-Chan\Template\obj\Debug\netcoreapp3.1\Pyan-Chan.genruntimeconfig.cache
+C:\Users\user\source\repos\Pyan-Chan\Template\bin\Debug\netcoreapp3.1\HtmlAgilityPack.dll
+C:\Users\user\source\repos\Pyan-Chan\Template\bin\Debug\netcoreapp3.1\Discord.Addons.Interactive.dll

@@ -9,10 +9,12 @@
       "Pyan-Chan/1.0.0": {
         "dependencies": {
           "Discord.Addons.Hosting": "3.0.0",
+          "Discord.Addons.Interactive": "2.0.0",
           "Discord.Net": "2.2.0",
           "Discord.Net.Commands": "2.2.0",
           "Discord.Net.Core": "2.2.0",
           "Discord.Net.WebSocket": "2.2.0",
+          "HtmlAgilityPack": "1.11.33",
           "Microsoft.Extensions.Configuration": "3.1.7",
           "Microsoft.Extensions.DependencyInjection": "3.1.7",
           "Microsoft.Extensions.Hosting": "3.1.7",
@@ -33,6 +35,18 @@
           "lib/netstandard2.1/Discord.Addons.Hosting.dll": {
             "assemblyVersion": "3.0.0.0",
             "fileVersion": "3.0.0.0"
+          }
+        }
+      },
+      "Discord.Addons.Interactive/2.0.0": {
+        "dependencies": {
+          "Discord.Net.Commands": "2.2.0",
+          "Discord.Net.WebSocket": "2.2.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Discord.Addons.Interactive.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
           }
         }
       },
@@ -101,6 +115,14 @@
           "lib/netstandard2.1/Discord.Net.WebSocket.dll": {
             "assemblyVersion": "2.2.0.0",
             "fileVersion": "2.2.0.0"
+          }
+        }
+      },
+      "HtmlAgilityPack/1.11.33": {
+        "runtime": {
+          "lib/netstandard2.0/HtmlAgilityPack.dll": {
+            "assemblyVersion": "1.11.33.0",
+            "fileVersion": "1.11.33.0"
           }
         }
       },
@@ -594,6 +616,13 @@
       "path": "discord.addons.hosting/3.0.0",
       "hashPath": "discord.addons.hosting.3.0.0.nupkg.sha512"
     },
+    "Discord.Addons.Interactive/2.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-j/bkGeDniPuODOOC+3ZpKvLmoG0z1NHSZrVu6bnaUEYd0tMY4TxaIwl36ue7fK9MXrqQc8VcjcDnvM6JX+V6HA==",
+      "path": "discord.addons.interactive/2.0.0",
+      "hashPath": "discord.addons.interactive.2.0.0.nupkg.sha512"
+    },
     "Discord.Net/2.2.0": {
       "type": "package",
       "serviceable": true,
@@ -635,6 +664,13 @@
       "sha512": "sha512-jZb/Ae5w0K0dnGQETcSJu0qA3j5vgG7Dtl27pAkiug90omFs5SB20WNReo25WoJuidPAa6gmaBEWm5RPaBghXw==",
       "path": "discord.net.websocket/2.2.0",
       "hashPath": "discord.net.websocket.2.2.0.nupkg.sha512"
+    },
+    "HtmlAgilityPack/1.11.33": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ccsOdeRuObzQNy3FGLHd0MTmPvEu9nKUYDAqLham1XD3azbU+gcyRF6Hu87A68b7WqGpCdBZiLU7CwJVVmTb6A==",
+      "path": "htmlagilitypack/1.11.33",
+      "hashPath": "htmlagilitypack.1.11.33.nupkg.sha512"
     },
     "Microsoft.Extensions.Configuration/3.1.7": {
       "type": "package",

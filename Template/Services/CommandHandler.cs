@@ -7,6 +7,7 @@ using Discord.Addons.Hosting;
 using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
+using Pyan.Handlers;
 using Victoria;
 
 namespace Pyan.Services
@@ -26,22 +27,35 @@ namespace Pyan.Services
             _service = service;
             _config = config;
             _lavaNode = lavaNode;
+
         }
 
         public override async Task InitializeAsync(CancellationToken cancellationToken)
         {
             _client.MessageReceived += OnMessageReceived;
             _client.Ready += OnReadyAsync;
+            _client.JoinedGuild += OnJoinedGuild; ///this serves only to watch how many server the bot is currently in. Currently it has no purpose but for custom status.
+            _client.LeftGuild += OnLeftGuild; ///this serves only to watch how many server the bot is currently in. Currently it has no purpose but for custom status. -Pyan/Yukii
 
             _service.CommandExecuted += OnCommandExecuted;
             await _service.AddModulesAsync(Assembly.GetEntryAssembly(), _provider);
+        }
+
+        private async Task OnLeftGuild(SocketGuild arg)
+        {
+            await _client.SetGameAsync($"with my master | ;help", null, ActivityType.Playing);
+        }
+
+        private async Task OnJoinedGuild(SocketGuild arg)
+        {
+            await _client.SetGameAsync($"with my master | ;help", null, ActivityType.Playing);
         }
 
         private async Task OnReadyAsync()
         {
             if (!_lavaNode.IsConnected)
             {
-               await _lavaNode.ConnectAsync();
+                await _lavaNode.ConnectAsync();
             }
         }
 
@@ -59,7 +73,7 @@ namespace Pyan.Services
 
         private async Task OnCommandExecuted(Optional<CommandInfo> command, ICommandContext context, IResult result)
         {
-            if (command.IsSpecified && !result.IsSuccess) await context.Channel.SendMessageAsync($"Error: {result}");
+            if (command.IsSpecified && !result.IsSuccess) await (context.Channel as ISocketMessageChannel).SendErrorsAsync("Error", result.ErrorReason);
         }
     }
 }

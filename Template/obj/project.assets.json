@@ -16,6 +16,19 @@
           "lib/netstandard2.1/Discord.Addons.Hosting.dll": {}
         }
       },
+      "Discord.Addons.Interactive/2.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Discord.Net.Commands": "2.2.0",
+          "Discord.Net.WebSocket": "2.2.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Discord.Addons.Interactive.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Discord.Addons.Interactive.dll": {}
+        }
+      },
       "Discord.Net/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -88,6 +101,15 @@
         },
         "runtime": {
           "lib/netstandard2.1/Discord.Net.WebSocket.dll": {}
+        }
+      },
+      "HtmlAgilityPack/1.11.33": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/HtmlAgilityPack.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/HtmlAgilityPack.dll": {}
         }
       },
       "Microsoft.Extensions.Configuration/3.1.7": {
@@ -742,6 +764,18 @@
         "lib/netstandard2.1/Discord.Addons.Hosting.dll"
       ]
     },
+    "Discord.Addons.Interactive/2.0.0": {
+      "sha512": "j/bkGeDniPuODOOC+3ZpKvLmoG0z1NHSZrVu6bnaUEYd0tMY4TxaIwl36ue7fK9MXrqQc8VcjcDnvM6JX+V6HA==",
+      "type": "package",
+      "path": "discord.addons.interactive/2.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "discord.addons.interactive.2.0.0.nupkg.sha512",
+        "discord.addons.interactive.nuspec",
+        "lib/netstandard2.0/Discord.Addons.Interactive.dll"
+      ]
+    },
     "Discord.Net/2.2.0": {
       "sha512": "D6X8Ap2yLEymJ0wfG8U1oW4zOaZThdjjg9XWrTD1CbEyCQzEEdauynNLEzZhw6b3RXeDdWVCyLdJIrSGObWNpg==",
       "type": "package",
@@ -834,6 +868,54 @@
         "lib/netstandard2.0/Discord.Net.WebSocket.xml",
         "lib/netstandard2.1/Discord.Net.WebSocket.dll",
         "lib/netstandard2.1/Discord.Net.WebSocket.xml"
+      ]
+    },
+    "HtmlAgilityPack/1.11.33": {
+      "sha512": "ccsOdeRuObzQNy3FGLHd0MTmPvEu9nKUYDAqLham1XD3azbU+gcyRF6Hu87A68b7WqGpCdBZiLU7CwJVVmTb6A==",
+      "type": "package",
+      "path": "htmlagilitypack/1.11.33",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "htmlagilitypack.1.11.33.nupkg.sha512",
+        "htmlagilitypack.nuspec",
+        "lib/Net35/HtmlAgilityPack.dll",
+        "lib/Net35/HtmlAgilityPack.pdb",
+        "lib/Net35/HtmlAgilityPack.xml",
+        "lib/Net40-client/HtmlAgilityPack.dll",
+        "lib/Net40-client/HtmlAgilityPack.pdb",
+        "lib/Net40-client/HtmlAgilityPack.xml",
+        "lib/Net40/HtmlAgilityPack.XML",
+        "lib/Net40/HtmlAgilityPack.dll",
+        "lib/Net40/HtmlAgilityPack.pdb",
+        "lib/Net45/HtmlAgilityPack.XML",
+        "lib/Net45/HtmlAgilityPack.dll",
+        "lib/Net45/HtmlAgilityPack.pdb",
+        "lib/NetCore45/HtmlAgilityPack.XML",
+        "lib/NetCore45/HtmlAgilityPack.dll",
+        "lib/NetCore45/HtmlAgilityPack.pdb",
+        "lib/netstandard1.3/HtmlAgilityPack.deps.json",
+        "lib/netstandard1.3/HtmlAgilityPack.dll",
+        "lib/netstandard1.3/HtmlAgilityPack.pdb",
+        "lib/netstandard1.3/HtmlAgilityPack.xml",
+        "lib/netstandard1.6/HtmlAgilityPack.deps.json",
+        "lib/netstandard1.6/HtmlAgilityPack.dll",
+        "lib/netstandard1.6/HtmlAgilityPack.pdb",
+        "lib/netstandard1.6/HtmlAgilityPack.xml",
+        "lib/netstandard2.0/HtmlAgilityPack.deps.json",
+        "lib/netstandard2.0/HtmlAgilityPack.dll",
+        "lib/netstandard2.0/HtmlAgilityPack.pdb",
+        "lib/netstandard2.0/HtmlAgilityPack.xml",
+        "lib/portable-net45+netcore45+wp8+MonoAndroid+MonoTouch/HtmlAgilityPack.XML",
+        "lib/portable-net45+netcore45+wp8+MonoAndroid+MonoTouch/HtmlAgilityPack.dll",
+        "lib/portable-net45+netcore45+wp8+MonoAndroid+MonoTouch/HtmlAgilityPack.pdb",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid+MonoTouch/HtmlAgilityPack.XML",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid+MonoTouch/HtmlAgilityPack.dll",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid+MonoTouch/HtmlAgilityPack.pdb",
+        "lib/uap10.0/HtmlAgilityPack.XML",
+        "lib/uap10.0/HtmlAgilityPack.dll",
+        "lib/uap10.0/HtmlAgilityPack.pdb",
+        "lib/uap10.0/HtmlAgilityPack.pri"
       ]
     },
     "Microsoft.Extensions.Configuration/3.1.7": {
@@ -2489,10 +2571,12 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "Discord.Addons.Hosting >= 3.0.0",
+      "Discord.Addons.Interactive >= 2.0.0",
       "Discord.Net >= 2.2.0",
       "Discord.Net.Commands >= 2.2.0",
       "Discord.Net.Core >= 2.2.0",
       "Discord.Net.WebSocket >= 2.2.0",
+      "HtmlAgilityPack >= 1.11.33",
       "Microsoft.Extensions.Configuration >= 3.1.7",
       "Microsoft.Extensions.DependencyInjection >= 3.1.7",
       "Microsoft.Extensions.Hosting >= 3.1.7",
@@ -2548,6 +2632,10 @@
             "target": "Package",
             "version": "[3.0.0, )"
           },
+          "Discord.Addons.Interactive": {
+            "target": "Package",
+            "version": "[2.0.0, )"
+          },
           "Discord.Net": {
             "target": "Package",
             "version": "[2.2.0, )"
@@ -2563,6 +2651,10 @@
           "Discord.Net.WebSocket": {
             "target": "Package",
             "version": "[2.2.0, )"
+          },
+          "HtmlAgilityPack": {
+            "target": "Package",
+            "version": "[1.11.33, )"
           },
           "Microsoft.Extensions.Configuration": {
             "target": "Package",
